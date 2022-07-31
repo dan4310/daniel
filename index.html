@@ -41,8 +41,11 @@
 	<div id="sidebar" class="d-none">
 		<div id="sidebar-blocker"></div>
 		<ul>
-			<li><a href="/#about">About</a></li>
-			<li><a href="/#about">About</a></li>
+			<li class="sidebar-close"><button id="btn-sidebar-close"><i class="fas fa-x"></i></button></li>
+			<li class="sidebar-link"><a href="#">Daniel Courtney</a></li>
+			<li class="sidebar-link"><a href="#about">About</a></li>
+			<li class="sidebar-link"><a href="#projects">Projects</a></li>
+			<li class="sidebar-link"><a href="#contact">Contact</a></li>
 		</ul>
 	</div>
 </header>
@@ -180,12 +183,24 @@
 	let btnSidebar = document.getElementById('btn-hamburger');
 	let sidebar = document.getElementById('sidebar');
 	let btnTheme = document.getElementById('btn-theme');
+	let sidebarBlocker = document.getElementById('sidebar-blocker');
+	let btnSidebarClose = document.getElementById('btn-sidebar-close');
+
+	let sidebarLinks = document.getElementsByClassName('sidebar-link');
+
+	for (let i = 0; i < sidebarLinks.length; i++) {
+		sidebarLinks[i].onclick = btnSidebarClick;
+	}
+
 	btnSidebar.onclick = btnSidebarClick;
+	sidebarBlocker.onclick = btnSidebarClick;
+	btnSidebarClose.onclick = btnSidebarClick;
+
 	btnTheme.onclick = btnThemeClick;
 	
 	let theme = 'lightTheme'; 
 	addThemeLink(localStorage.getItem('myTheme'));
-	
+
 	function btnThemeClick(e) {
 		if (theme === 'lightTheme') addThemeLink('darkTheme');	
 		else addThemeLink('lightTheme');	
@@ -215,12 +230,14 @@
 		if (isSidebarOpen) {
 			sidebar.classList.add('d-none');
 			sidebar.classList.remove('d-grid');
+			document.body.classList.remove('noscroll');
 		}
 		else {
 			sidebar.classList.add('d-grid');
 			sidebar.classList.remove('d-none');
+			document.body.classList.add('noscroll');
 		}
-		btnSidebar = !btnSidebar;
+		isSidebarOpen = !isSidebarOpen;
 	}
 </script>
 </html>
