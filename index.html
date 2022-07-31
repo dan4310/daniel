@@ -239,5 +239,12 @@
 		}
 		isSidebarOpen = !isSidebarOpen;
 	}
+
+	window.addEventListener('resize', function (event) {
+		let width = window.innerWidth;
+		if (width >= 576 && isSidebarOpen)
+			btnSidebarClick(null);
+	});
+
 </script>
 </html>
