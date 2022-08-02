@@ -1,0 +1,55 @@
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>Daniel Courtney</title>
+        <link rel="icon" type="image/png" href="images/me-icon.png">    
+
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/themes/lightTheme.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Source+Serif+Pro:wght@600;700;900&display=swap" rel="stylesheet"> 
+        
+        <script src="https://kit.fontawesome.com/afb200c0a4.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+        body {
+                display: flex;
+                align-items: center;
+        }
+        h1 {
+                margin-top: var(--m-lg);
+        }
+</style>
+<body>
+        <h1>404 Not Found</h1>
+        <a href="https://danielmcourtney.com">danielmcourtney.com</a>
+</body>
+<script>
+        let theme = 'lightTheme'; 
+        addThemeLink(localStorage.getItem('myTheme'));
+
+        function addThemeLink(newTheme) {
+                if (!newTheme || theme === newTheme) return;
+                let links = document.getElementsByTagName('link');
+                for (let i = 0; i < links.length; i++) {
+                        let link = links[i];
+                        if (link.href && link.href.includes(theme)) {
+                                link.parentNode.removeChild(link);      
+                                break;
+                        } 
+                }
+
+                let newLink = document.createElement('link');
+                newLink.rel = 'stylesheet';
+                let ref = `styles/themes/${newTheme}.css`;
+                newLink.href = ref;
+                localStorage.setItem('myTheme', newTheme);
+                theme = newTheme;
+                document.head.appendChild(newLink);
+        }
+</script>
+</html>
