@@ -319,6 +319,9 @@ header {
 	margin-left: auto;
 	margin-top: var(--m-md);
 	grid-area: orator;
+
+/*	animation-name: fadein;
+	animation-duration: 4s;*/
 }
 
 
@@ -482,3 +485,13 @@ header {
 	}
 }
 
+
+/* ----- ANIMATIONS ----- */
+
+@keyframes fadein {
+	0% { opacity: 0 }
+	25% { opacity: 0.1 }
+	50% { opacity: 0.4 }
+	75% { opacity: 0.9 }
+	100% { opacity: 1 }
+}
