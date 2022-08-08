@@ -311,7 +311,10 @@ header {
 .hero-buttons {
 	grid-area: buttons;
 	display: none;
-	align-items: center;
+}
+
+#img-boxer {
+	width: 225px;
 }
 
 #img-orator {
@@ -452,6 +455,7 @@ header {
 	}
 	.hero-buttons {
 		display: flex;
+		align-items: flex-end;
 	}
 	#hero {
 		grid-template-areas:
@@ -475,6 +479,10 @@ header {
 
 	#img-orator {
 		width: 375px;
+	}
+
+	#img-boxer {
+		width: 325px;
 	}
 
 }
